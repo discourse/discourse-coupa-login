@@ -1,7 +1,7 @@
 import Component from "@ember/component";
-import discourseComputed from "discourse-common/utils/decorators";
-import { inject as service } from "@ember/service";
+import { service } from "@ember/service";
 import { findAll } from "discourse/models/login-method";
+import discourseComputed from "discourse-common/utils/decorators";
 
 export default Component.extend({
   router: service(),
@@ -9,7 +9,7 @@ export default Component.extend({
   @discourseComputed("router.currentRouteName")
   shouldDisplay(currentRouteName) {
     // check if currently on login page
-    return currentRouteName == "login";
+    return currentRouteName === "login";
   },
 
   @discourseComputed
