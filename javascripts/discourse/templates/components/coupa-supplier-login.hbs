@@ -1,10 +1,10 @@
-{{#if shouldDisplay}}
+{{#if this.shouldDisplay}}
   {{! check if correct route }}
-  {{#if oidc}}
+  {{#if this.oidc}}
     {{! checks if oidc button exists }}
     {{d-button
-      action=(action "externalLogin" oidc)
-      translatedLabel=oidc.title
+      action=(action "externalLogin" this.oidc)
+      translatedLabel=this.oidc.title
       icon="sign-in-alt"
       class="btn-primary"
     }}
