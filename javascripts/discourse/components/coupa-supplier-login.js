@@ -1,8 +1,8 @@
 import Component from "@ember/component";
 import { action } from "@ember/object";
 import { service } from "@ember/service";
+import discourseComputed from "discourse/lib/decorators";
 import { findAll } from "discourse/models/login-method";
-import discourseComputed from "discourse-common/utils/decorators";
 
 export default class CoupaSupplierLogin extends Component {
   @service router;
