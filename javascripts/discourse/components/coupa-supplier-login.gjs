@@ -33,9 +33,9 @@ export default class CoupaSupplierLogin extends Component {
   }
 
   @action
-  externalLogin(provider) {
+  externalLogin() {
     // add login action
-    provider.doLogin({
+    this.oidc.doLogin({
       signup: true,
       params: {
         origin: window.location.href,
@@ -49,7 +49,7 @@ export default class CoupaSupplierLogin extends Component {
       {{#if this.oidc}}
         {{! checks if oidc button exists }}
         <DButton
-          @action={{action "externalLogin" this.oidc}}
+          @action={{this.externalLogin}}
           @translatedLabel={{this.oidc.title}}
           @icon="sign-in-alt"
           class="btn-primary"
