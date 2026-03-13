@@ -1,30 +1,30 @@
+/* eslint-disable ember/no-classic-components, ember/require-tagless-components */
 import Component from "@ember/component";
-import { action } from "@ember/object";
+import { action, computed } from "@ember/object";
 import { service } from "@ember/service";
 import DButton from "discourse/components/d-button";
-import discourseComputed from "discourse/lib/decorators";
 import { findAll } from "discourse/models/login-method";
 
 export default class CoupaSupplierLogin extends Component {
   @service router;
 
-  @discourseComputed("router.currentRouteName")
-  shouldDisplay(currentRouteName) {
+  @computed("router.currentRouteName")
+  get shouldDisplay() {
     // check if currently on login page
-    return currentRouteName === "login";
+    return this.router?.currentRouteName === "login";
   }
 
-  @discourseComputed
-  buttons() {
+  @computed
+  get buttons() {
     // get buttons
     return findAll();
   }
 
-  @discourseComputed("buttons")
-  oidc(buttons) {
+  @computed("buttons")
+  get oidc() {
     // filter out oidc button
     let oidc;
-    buttons.forEach(function (button) {
+    this.buttons.forEach(function (button) {
       if (button.name === "oidc") {
         oidc = button;
       }
